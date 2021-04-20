@@ -6,22 +6,34 @@ class Game {
   constructor() {
     this.matrix = new Matrix();
     this.matrixView = new MatrixView();
-    this.currentPiece = new LShape();
     this.main = this.main.bind(this);
+    this.spawnNewTetromino();
 
-    this.matrix.addTetromino(this.currentPiece);
     this.matrixView.render(this.matrix);
   }
 
   main() {
-    if (this.currentPiece) {
-      this.matrix.removeTetromino(this.currentPiece);
-      this.currentPiece.drop();
-      this.matrix.update(this.currentPiece);
-      this.matrix.isCollided(this.currentPiece) && (this.currentPiece = null);
+    //TODO spawn new tetromino if currentTetromino is null
+
+    if (this.currentTetromino) {
+      this.matrix.removeTetromino(this.currentTetromino);
+      this.currentTetromino.drop();
+      this.matrix.update(this.currentTetromino);
+      this.matrix.isCollided(this.currentTetromino) && (this.currentTetromino = null);
     }
 
     this.matrixView.render(this.matrix);
+  }
+
+  spawnNewTetromino() {
+    this.currentTetromino = this.getRandomTetromino();
+    this.matrix.update(this.currentTetromino);
+  }
+
+  getRandomTetromino() {
+    // TODO: add new classes for all tetromino shapes and create algorithm that will return tetromino of random type
+
+    return new LShape();
   }
 }
 

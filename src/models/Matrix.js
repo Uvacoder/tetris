@@ -1,21 +1,15 @@
 import Grid from '../utils/Grid';
 
 class Matrix extends Grid {
-  constructor(height = 20, width = 10) {
+  constructor(width = 10, height = 20) {
     super(height, width);
     this.width = width;
     this.height = height;
   }
 
-  addTetromino(tetromino) {
-    tetromino.forEach((block, x, y) => {
-      if (block) this.elements[tetromino.y + x][tetromino.x + y] = tetromino.color;
-    });
-  }
-
   removeTetromino(tetromino) {
-    tetromino.forEach((block, x, y) => {
-      if (block) this.elements[tetromino.y + x][tetromino.x + y] = null;
+    tetromino.forEach((block, i, j) => {
+      if (block) this.elements[tetromino.y + i][tetromino.x + j] = null;
     });
   }
 
@@ -28,6 +22,7 @@ class Matrix extends Grid {
   }
 
   isCollided(tetromino) {
+    //TODO add collision check with the element beneath
     let isCollided = false;
 
     tetromino.forEach((block, i) => {

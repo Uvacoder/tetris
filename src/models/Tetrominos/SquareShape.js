@@ -1,15 +1,14 @@
 import Tetromino from './Tetromino';
 
-class LShape extends Tetromino {
+class SquareShape extends Tetromino {
   constructor() {
     super();
-    this.color = 'blue';
+    this.color = 'yellow';
     this.elements = [
-      [0, 1],
-      [0, 1],
+      [1, 1],
       [1, 1]
     ];
   }
 }
 
-export default LShape;
+export default SquareShape;

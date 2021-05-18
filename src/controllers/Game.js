@@ -14,7 +14,9 @@ class Game {
 
   main() {
     //TODO spawn new tetromino if currentTetromino is null
-
+      if (this.currentTetromino == null) {
+          this.spawnNewTetromino();
+      }
     if (this.currentTetromino) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.drop();

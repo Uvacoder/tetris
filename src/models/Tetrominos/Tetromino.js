@@ -10,6 +10,14 @@ class Tetromino extends Grid {
   drop() {
     this.y++;
   }
+
+  moveLeft() {
+    this.x--;
+  }
+
+  moveRight() {
+    this.x++;
+  }
 }
 
 export default Tetromino;

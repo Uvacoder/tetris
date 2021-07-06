@@ -1,5 +1,11 @@
 import Matrix from '../models/Matrix';
 import LShape from '../models/Tetrominos/LShape';
+import LineShape from '../models/Tetrominos/LineShape';
+import RLShape from '../models/Tetrominos/RLShape';
+import RSShape from '../models/Tetrominos/RSShape';
+import SquareShape from '../models/Tetrominos/SquareShape';
+import SShape from '../models/Tetrominos/SShape';
+import TShape from '../models/Tetrominos/TShape';
 import MatrixView from '../views/MatrixView';
 
 class Game {
@@ -32,8 +38,25 @@ class Game {
 
   getRandomTetromino() {
     // TODO: add new classes for all tetromino shapes and create algorithm that will return tetromino of random type
+    const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
 
-    return new LShape();
+    let r = Math.floor(Math.random() * 7); // 0 -> 6
+
+    return new pieces[r]();
+  }
+
+  moveLeft() {
+    if (this.currentTetromino) {
+      this.matrix.removeTetromino(this.currentTetromino);
+      this.currentTetromino.moveLeft();
+    }
+  }
+
+  moveRight() {
+    if (this.currentTetromino) {
+      this.matrix.removeTetromino(this.currentTetromino);
+      this.currentTetromino.moveRight();
+    }
   }
 }
 

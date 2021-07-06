@@ -25,10 +25,14 @@ class Matrix extends Grid {
     //TODO add collision check with the element beneath
     let isCollided = false;
 
-    tetromino.forEach((block, i) => {
+    tetromino.forEach((block, i, j) => {
       if (tetromino.y + i >= this.height - 1) {
         isCollided = true;
       }
+
+      /* if (tetromino.x + j < 1 || tetromino.x + j >= this.width - 1) {
+        isCollided = true;
+      } */
     });
 
     return isCollided;

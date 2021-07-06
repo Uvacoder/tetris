@@ -46,7 +46,7 @@ class Game {
   }
 
   move(side) {
-    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== side) {
+    if (this.currentTetromino && !this.matrix.isCollidedWithSideBorder(this.currentTetromino, side)) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.move(side);
     }

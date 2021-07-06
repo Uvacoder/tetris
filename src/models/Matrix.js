@@ -34,16 +34,13 @@ class Matrix extends Grid {
     return isCollided;
   }
 
-  isCollidedWithSideBorder(tetromino) {
-    let isCollided = '';
+  isCollidedWithSideBorder(tetromino, side) {
+    let isCollided = false;
 
     tetromino.forEach((block, i, j) => {
-      if (tetromino.x + j < 1) {
-        isCollided = 'left';
-      }
-
-      if (tetromino.x + j >= this.width - 1) {
-        isCollided = 'right';
+      console.log(side.collisionChecker(tetromino.x, j, this.width));
+      if (side.collisionChecker(tetromino.x, j, this.width)) {
+        isCollided = true;
       }
     });
 

@@ -5,9 +5,9 @@ const game = new Game();
 setInterval(game.main, 500);
 document.addEventListener('keypress', (event) => {
   if (event.key === '4') {
-    game.moveLeft();
+    game.move('left');
   }
   if (event.key === '6') {
-    game.moveRight();
+    game.move('right');
   }
 });

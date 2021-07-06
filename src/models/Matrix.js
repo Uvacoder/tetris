@@ -25,7 +25,7 @@ class Matrix extends Grid {
     //TODO add collision check with the element beneath
     let isCollided = false;
 
-    tetromino.forEach((block, i, j) => {
+    tetromino.forEach((block, i) => {
       if (tetromino.y + i >= this.height - 1) {
         isCollided = true;
       }

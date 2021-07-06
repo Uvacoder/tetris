@@ -7,7 +7,6 @@ import SquareShape from '../models/Tetrominos/SquareShape';
 import SShape from '../models/Tetrominos/SShape';
 import TShape from '../models/Tetrominos/TShape';
 import MatrixView from '../views/MatrixView';
-import Tetromino from '../models/Tetrominos/Tetromino';
 
 class Game {
   constructor() {
@@ -46,17 +45,10 @@ class Game {
     return new pieces[r]();
   }
 
-  moveLeft() {
-    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== 'left') {
+  move(side) {
+    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== side) {
       this.matrix.removeTetromino(this.currentTetromino);
-      this.currentTetromino.moveLeft();
-    }
-  }
-
-  moveRight() {
-    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== 'right') {
-      this.matrix.removeTetromino(this.currentTetromino);
-      this.currentTetromino.moveRight();
+      this.currentTetromino.move(side);
     }
   }
 }

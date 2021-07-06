@@ -11,12 +11,9 @@ class Tetromino extends Grid {
     this.y++;
   }
 
-  moveLeft() {
-    this.x--;
-  }
-
-  moveRight() {
-    this.x++;
+  move(side) {
+    if (side === 'left') this.x--;
+    if (side === 'right') this.x++;
   }
 }
 

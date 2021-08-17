@@ -20,10 +20,10 @@ class Game {
   }
 
   main() {
-    //TODO spawn new tetromino if currentTetromino is null
-      if (this.currentTetromino == null) {
-          this.spawnNewTetromino();
-      }
+    if (this.currentTetromino == null) {
+      this.spawnNewTetromino();
+      //console.log(this.matrix.elements);
+    }
     if (this.currentTetromino) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.drop();
@@ -40,10 +40,24 @@ class Game {
   }
 
   getRandomTetromino() {
-    const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
+    //const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
+    const pieces = [RLShape];
     const random = Math.floor(Math.random() * 7);
 
-    return new pieces[random]();
+    return new pieces[0]();
+  }
+
+  move(side) {
+    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== side) {
+      this.matrix.removeTetromino(this.currentTetromino);
+      this.currentTetromino.move(side);
+    }
+  }
+
+  rotate() {
+    this.matrix.removeTetromino(this.currentTetromino);
+    this.currentTetromino.rotate();
+    this.matrix.update(this.currentTetromino);
   }
 }
 

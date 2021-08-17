@@ -5,9 +5,15 @@ class RSShape extends Tetromino {
     super();
     this.color = 'green';
     this.elements = [
-      [1, 0],
-      [1, 1],
-      [0, 1]
+      [
+        [0, 1, 1],
+        [1, 1, 0],
+      ],
+      [
+        [1, 0],
+        [1, 1],
+        [0, 1],
+      ],
     ];
   }
 }

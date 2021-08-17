@@ -5,10 +5,8 @@ class LineShape extends Tetromino {
     super();
     this.color = 'skyblue';
     this.elements = [
-      [1],
-      [1],
-      [1],
-      [1]
+      [1, 1, 1, 1],
+      [[1], [1], [1], [1]],
     ];
   }
 }

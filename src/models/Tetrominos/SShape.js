@@ -5,9 +5,15 @@ class SShape extends Tetromino {
     super();
     this.color = 'red';
     this.elements = [
-      [0, 1],
-      [1, 1],
-      [1, 0]
+      [
+        [1, 1, 0],
+        [0, 1, 1],
+      ],
+      [
+        [0, 1],
+        [1, 1],
+        [1, 0],
+      ],
     ];
   }
 }

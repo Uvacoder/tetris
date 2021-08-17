@@ -6,7 +6,11 @@ class SquareShape extends Tetromino {
     this.color = 'yellow';
     this.elements = [
       [1, 1],
-      [1, 1]
+      [1, 1],
+    ];
+    this.variants = [
+      [1, 1],
+      [1, 1],
     ];
   }
 }

@@ -23,12 +23,13 @@ class Matrix extends Grid {
 
   isCollided(tetromino) {
     //TODO add collision check with the element beneath
-    let isCollided = false;
-
-    tetromino.forEach((block, i) => {
-      if (tetromino.y + i >= this.height - 1) {
-        isCollided = true;
-      }
+      let isCollided = false;
+      //console.log(tetromino.elements.length);
+      tetromino.forEach((block, i) => {
+           //console.log(i);
+          if ((i === tetromino.elements.length - 1)&&(tetromino.y + i >= this.height - 1 || this.elements[tetromino.y + i + 1][tetromino.x])) {
+                  isCollided = true;
+              }
     });
 
     return isCollided;

@@ -3,7 +3,7 @@ import Game from './controllers/Game';
 const game = new Game();
 // game.main();
 setInterval(game.main, 500);
-document.addEventListener('keypress', (event) => {
+document.addEventListener('keydown', (event) => {
   if (event.key === '4' || event.key === 'ArrowLeft') {
     game.move('left');
   }

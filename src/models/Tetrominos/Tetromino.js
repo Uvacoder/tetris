@@ -5,7 +5,7 @@ class Tetromino extends Grid {
     super();
     this.x = 4;
     this.y = 0;
-    this.z = 0;
+    this.currentVariant = 0;
   }
 
   drop() {
@@ -18,12 +18,11 @@ class Tetromino extends Grid {
   }
 
   rotate() {
-    this.z += 1;
-    if (this.z % (this.variants.length - 1) === 0) this.z = 0;
-    //console.log(this.z);
-    //this.z = this.z % (this.variants.length - 1) === 0 ? 1 : this.z + 1;
-    //console.log(this.z);
-    this.elements = this.variants[this.z];
+    this.currentVariant += 1;
+    if (this.currentVariant > this.variants.length - 1) this.currentVariant = 0;
+    console.log(this.currentVariant);
+    console.log(this.variants[this.currentVariant]);
+    this.elements = this.variants[this.currentVariant];
   }
 }
 

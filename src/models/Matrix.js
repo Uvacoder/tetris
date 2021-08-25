@@ -22,19 +22,29 @@ class Matrix extends Grid {
   }
 
   isCollided(tetromino) {
-    //TODO add collision check with the element beneath
     let isCollided = false;
-    //console.log(tetromino.elements.length);
-    tetromino.forEach((block, i) => {
-      //console.log(i);
-      if (
-        i === tetromino.elements.length - 1 &&
-        (tetromino.y + i >= this.height - 1 || this.elements[tetromino.y + i + 1][tetromino.x])
-      ) {
+
+    tetromino.forEach((block, i, j) => {
+      const isThisElementNotEmpty = Boolean(block);
+      const isLastElement = i === tetromino.elements.length - 1;
+      const isLastElementInColumn = tetromino.elements
+        .filter((_, rowIndex) => rowIndex !== i)
+        .every((row) => row[j] === 0);
+
+      const shouldCheckCollision = isThisElementNotEmpty && (isLastElement || isLastElementInColumn);
+
+      const elementBelowX = tetromino.x + j;
+      const elementBelowY = tetromino.y + i + 1;
+      const isAnyElementBelow = this.elements[elementBelowY] && this.elements[elementBelowY][elementBelowX];
+
+      const isAtTheBottom = elementBelowY >= this.height;
+
+      const isCollidedWithOtherElement = isAtTheBottom || isAnyElementBelow;
+
+      if (shouldCheckCollision && isCollidedWithOtherElement) {
         isCollided = true;
       }
     });
-
     return isCollided;
   }
 

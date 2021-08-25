@@ -22,7 +22,6 @@ class Game {
   main() {
     if (this.currentTetromino == null) {
       this.spawnNewTetromino();
-      //console.log(this.matrix.elements);
     }
     if (this.currentTetromino) {
       this.matrix.removeTetromino(this.currentTetromino);
@@ -51,6 +50,8 @@ class Game {
     if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== side) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.move(side);
+      this.matrix.update(this.currentTetromino);
+      this.matrixView.render(this.matrix);
     }
   }
 
@@ -58,6 +59,8 @@ class Game {
     this.matrix.removeTetromino(this.currentTetromino);
     this.currentTetromino.rotate();
     this.matrix.update(this.currentTetromino);
+
+    this.matrixView.render(this.matrix);
   }
 }
 

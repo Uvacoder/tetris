@@ -1,11 +1,11 @@
 import Matrix from '../models/Matrix';
-import LShape from '../models/Tetrominos/LShape';
-import RLShape from '../models/Tetrominos/RLShape';
-import LineShape from '../models/Tetrominos/LineShape';
-import SquareShape from '../models/Tetrominos/SquareShape';
-import SShape from '../models/Tetrominos/SShape';
-import RSShape from '../models/Tetrominos/RSShape';
-import TShape from '../models/Tetrominos/TShape';
+import L from '../models/Tetrominos/L';
+import J from '../models/Tetrominos/J';
+import I from '../models/Tetrominos/I';
+import O from '../models/Tetrominos/O';
+import S from '../models/Tetrominos/S';
+import Z from '../models/Tetrominos/Z';
+import T from '../models/Tetrominos/T';
 import MatrixView from '../views/MatrixView';
 
 class Game {
@@ -39,11 +39,11 @@ class Game {
   }
 
   getRandomTetromino() {
-    //const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
-    const pieces = [RLShape];
+    const pieces = [L, J, I, O, S, Z, T];
+    //const pieces = [T];
     const random = Math.floor(Math.random() * 7);
 
-    return new pieces[0]();
+    return new pieces[random]();
   }
 
   move(side) {

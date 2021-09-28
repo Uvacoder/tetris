@@ -1,11 +1,14 @@
 import Grid from '../../utils/Grid';
 
 class Tetromino extends Grid {
-  constructor() {
+  constructor(color, variants) {
     super();
     this.x = 4;
     this.y = 0;
+    this.color = color;
+    this.variants = variants;
     this.currentVariant = 0;
+    this.elements = this.variants[this.currentVariant];
   }
 
   drop() {
@@ -20,8 +23,6 @@ class Tetromino extends Grid {
   rotate() {
     this.currentVariant += 1;
     if (this.currentVariant > this.variants.length - 1) this.currentVariant = 0;
-    console.log(this.currentVariant);
-    console.log(this.variants[this.currentVariant]);
     this.elements = this.variants[this.currentVariant];
   }
 }

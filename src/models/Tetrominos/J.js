@@ -1,14 +1,9 @@
 import Tetromino from './Tetromino';
 
-class RLShape extends Tetromino {
+class J extends Tetromino {
   constructor() {
-    super();
-    this.color = 'orange';
-    this.elements = [
-      [1, 0, 0],
-      [1, 1, 1],
-    ];
-    this.variants = [
+    const color = 'orange';
+    const variants = [
       [
         [1, 0, 0],
         [1, 1, 1],
@@ -28,7 +23,8 @@ class RLShape extends Tetromino {
         [1, 1],
       ],
     ];
+    super(color, variants);
   }
 }
 
-export default RLShape;
+export default J;

@@ -1,10 +1,9 @@
 import Tetromino from './Tetromino';
 
-class RSShape extends Tetromino {
+class S extends Tetromino {
   constructor() {
-    super();
-    this.color = 'green';
-    this.elements = [
+    const color = 'green';
+    const variants = [
       [
         [0, 1, 1],
         [1, 1, 0],
@@ -15,7 +14,8 @@ class RSShape extends Tetromino {
         [0, 1],
       ],
     ];
+    super(color, variants);
   }
 }
 
-export default RSShape;
+export default S;

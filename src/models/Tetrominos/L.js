@@ -1,30 +1,30 @@
 import Tetromino from './Tetromino';
 
-class TShape extends Tetromino {
+class L extends Tetromino {
   constructor() {
-    super();
-    this.color = 'pink';
-    this.elements = [
+    const color = 'blue';
+    const variants = [
       [
-        [0, 1, 0],
+        [0, 0, 1],
         [1, 1, 1],
       ],
       [
+        [1, 0],
         [1, 0],
         [1, 1],
-        [1, 0],
       ],
       [
         [1, 1, 1],
-        [0, 1, 0],
+        [1, 0, 0],
       ],
       [
+        [1, 1],
         [0, 1],
-        [1, 1],
         [0, 1],
       ],
     ];
+    super(color, variants);
   }
 }
 
-export default TShape;
+export default L;

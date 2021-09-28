@@ -1,10 +1,9 @@
 import Tetromino from './Tetromino';
 
-class SShape extends Tetromino {
+class Z extends Tetromino {
   constructor() {
-    super();
-    this.color = 'red';
-    this.elements = [
+    const color = 'red';
+    const variants = [
       [
         [1, 1, 0],
         [0, 1, 1],
@@ -15,7 +14,8 @@ class SShape extends Tetromino {
         [1, 0],
       ],
     ];
+    super(color, variants);
   }
 }
 
-export default SShape;
+export default Z;

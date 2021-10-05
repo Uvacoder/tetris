@@ -1,11 +1,11 @@
 import Matrix from '../models/Matrix';
-import LShape from '../models/Tetrominos/LShape';
-import LineShape from '../models/Tetrominos/LineShape';
-import RLShape from '../models/Tetrominos/RLShape';
-import RSShape from '../models/Tetrominos/RSShape';
-import SquareShape from '../models/Tetrominos/SquareShape';
-import SShape from '../models/Tetrominos/SShape';
-import TShape from '../models/Tetrominos/TShape';
+import L from '../models/Tetrominos/L';
+import J from '../models/Tetrominos/J';
+import I from '../models/Tetrominos/I';
+import O from '../models/Tetrominos/O';
+import S from '../models/Tetrominos/S';
+import Z from '../models/Tetrominos/Z';
+import T from '../models/Tetrominos/T';
 import MatrixView from '../views/MatrixView';
 
 class Game {
@@ -13,14 +13,16 @@ class Game {
     this.matrix = new Matrix();
     this.matrixView = new MatrixView();
     this.main = this.main.bind(this);
+
     this.spawnNewTetromino();
 
     this.matrixView.render(this.matrix);
   }
 
   main() {
-    //TODO spawn new tetromino if currentTetromino is null
-
+    if (this.currentTetromino == null) {
+      this.spawnNewTetromino();
+    }
     if (this.currentTetromino) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.drop();
@@ -37,9 +39,8 @@ class Game {
   }
 
   getRandomTetromino() {
-    const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
-
-    const pieceIndex = Math.floor(Math.random() * 7); // 0 -> 6
+    const pieces = [L, J, I, O, S, Z, T];
+    const pieceIndex = Math.floor(Math.random() * 7);
 
     return new pieces[pieceIndex]();
   }
@@ -48,7 +49,17 @@ class Game {
     if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) !== side) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.move(side);
+      this.matrix.update(this.currentTetromino);
+      this.matrixView.render(this.matrix);
     }
+  }
+
+  rotate() {
+    this.matrix.removeTetromino(this.currentTetromino);
+    this.currentTetromino.rotate();
+    this.matrix.update(this.currentTetromino);
+
+    this.matrixView.render(this.matrix);
   }
 }
 

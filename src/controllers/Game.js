@@ -12,14 +12,14 @@ class Game {
   constructor() {
     this.matrix = new Matrix();
     this.matrixView = new MatrixView();
-    this.main = this.main.bind(this);
+    this.drop = this.drop.bind(this);
 
     this.spawnNewTetromino();
 
     this.matrixView.render(this.matrix);
   }
 
-  main() {
+  drop() {
     if (this.currentTetromino == null) {
       this.spawnNewTetromino();
     }

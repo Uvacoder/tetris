@@ -37,12 +37,11 @@ class Game {
   }
 
   getRandomTetromino() {
-    // TODO: add new classes for all tetromino shapes and create algorithm that will return tetromino of random type
     const pieces = [LShape, RLShape, LineShape, SquareShape, SShape, RSShape, TShape];
 
-    let r = Math.floor(Math.random() * 7); // 0 -> 6
+    const pieceIndex = Math.floor(Math.random() * 7); // 0 -> 6
 
-    return new pieces[r]();
+    return new pieces[pieceIndex]();
   }
 
   move(side) {

@@ -63,6 +63,22 @@ class Matrix extends Grid {
 
     return isCollided;
   }
+
+  isCollidedWithSideBorder(tetromino) {
+    let isCollided = '';
+
+    tetromino.forEach((block, i, j) => {
+      if (tetromino.x + j < 1) {
+        isCollided = 'left';
+      }
+
+      if (tetromino.x + j >= this.width - 1) {
+        isCollided = 'right';
+      }
+    });
+
+    return isCollided;
+  }
 }
 
 export default Matrix;

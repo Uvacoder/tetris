@@ -40,7 +40,7 @@ class Game {
 
   getRandomTetromino() {
     const pieces = [L, J, I, O, S, Z, T];
-    const pieceIndex = Math.floor(Math.random() * 7);
+    const pieceIndex = Math.floor(Math.random() * pieces.length);
 
     return new pieces[pieceIndex]();
   }

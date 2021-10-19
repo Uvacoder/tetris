@@ -23,11 +23,12 @@ class Game {
     if (this.currentTetromino == null) {
       this.spawnNewTetromino();
     }
+
     if (this.currentTetromino) {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.drop();
       this.matrix.update(this.currentTetromino);
-      this.matrix.isCollided(this.currentTetromino) && (this.currentTetromino = null);
+      this.fixCurrentTetromino();
     }
 
     this.matrixView.render(this.matrix);
@@ -50,16 +51,23 @@ class Game {
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.move(side);
       this.matrix.update(this.currentTetromino);
+      this.fixCurrentTetromino();
       this.matrixView.render(this.matrix);
     }
   }
 
   rotate() {
-    this.matrix.removeTetromino(this.currentTetromino);
-    this.currentTetromino.rotate();
-    this.matrix.update(this.currentTetromino);
+    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) === '') {
+      this.matrix.removeTetromino(this.currentTetromino);
+      this.currentTetromino.rotate();
+      this.matrix.update(this.currentTetromino);
+      this.fixCurrentTetromino();
+      this.matrixView.render(this.matrix);
+    }
+  }
 
-    this.matrixView.render(this.matrix);
+  fixCurrentTetromino() {
+    if (this.matrix.isCollided(this.currentTetromino)) this.currentTetromino = null;
   }
 }
 

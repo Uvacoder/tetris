@@ -5,6 +5,7 @@ class Matrix extends Grid {
     super(height, width);
     this.width = width;
     this.height = height;
+    this.elements[19] = ['green', 'green', 'green', 'green', undefined, undefined, 'green', 'green', 'green', 'green'];
   }
 
   removeTetromino(tetromino) {
@@ -43,6 +44,10 @@ class Matrix extends Grid {
 
       if (shouldCheckCollision && isCollidedWithOtherElement) {
         isCollided = true;
+        console.log(this.checkFullLine());
+        const fullRows = this.checkFullLine();
+        this.removeFullRows(fullRows);
+        return;
       }
     });
     return isCollided;
@@ -62,6 +67,36 @@ class Matrix extends Grid {
     });
 
     return isCollided;
+  }
+
+  checkFullLine() {
+    const fullRows = [];
+
+    for (let i = 0; i < this.height; i++) {
+      let isFullRow = true;
+      for (let j = 0; j < this.width; j++) {
+        const block = this.elements[i][j];
+        if (!block) {
+          isFullRow = false;
+        }
+      }
+      if (isFullRow === true) {
+        fullRows.push(i);
+      }
+    }
+    return fullRows;
+  }
+
+  removeFullRows(fullRows) {
+    for (let i = 0; i < this.height; i++) {
+      if (fullRows.includes(i)) {
+        this.elements.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < fullRows.length; i++) {
+      this.elements.splice(0, 0, [null, null, null, null, null, null, null, null, null, null]);
+      debugger;
+    }
   }
 }
 

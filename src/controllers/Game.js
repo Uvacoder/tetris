@@ -57,7 +57,9 @@ class Game {
   }
 
   rotate() {
-    if (this.currentTetromino && this.matrix.isCollidedWithSideBorder(this.currentTetromino) === '') {
+    const collisionStatus = this.matrix.isCollidedWithSideBorder(this.currentTetromino);
+    if (this.currentTetromino) {
+      this.move(collisionStatus === 'right' ? 'left' : 'right')
       this.matrix.removeTetromino(this.currentTetromino);
       this.currentTetromino.rotate();
       this.matrix.update(this.currentTetromino);

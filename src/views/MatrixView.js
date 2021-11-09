@@ -17,6 +17,9 @@ class MatrixView {
   render(matrix) {
     matrix.forEach((cell, x, y) => {
       const element = document.querySelector(`.game-cell[data-row="${x}"][data-column="${y}"]`);
+      if (!element) {
+        debugger;
+      }
       element.style.backgroundColor = cell ? cell : 'black';
     });
   }

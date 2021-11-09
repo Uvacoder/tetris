@@ -1,5 +1,6 @@
 @import './variables.css';
 @import './game.css';
+@import './score.css';
 
 body,
 div {

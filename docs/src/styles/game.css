@@ -1,0 +1,14 @@
+#game {
+  outline: red solid 2px;
+  background-color: black;
+  height: calc(20 * var(--block-size));
+  width: calc(10 * var(--block-size));
+  display: grid;
+  grid-template-rows: repeat(20, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+}
+.game-cell {
+  width: var(--block-size);
+  height: var(--block-size);
+  border: 0.1px rgba(255, 255, 255, 0.3) solid;
+}
